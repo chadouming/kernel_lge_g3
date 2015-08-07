@@ -126,7 +126,7 @@ static struct dbs_tuners {
  * corner case: enabling io_is_busy might cause freq increase and disabling
  * might cause freq decrease, which probably matches the original intent.
  */
-static inline cputime64_t get_cpu_idle_time(unsigned int cpu, cputime64_t *wall)
+static inline cputime64_t get_cpu_idle_time(unsigned int cpu, u64 *wall)
 {
         u64 idle_time;
         u64 iowait_time;
