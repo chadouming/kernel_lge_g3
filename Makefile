@@ -249,9 +249,9 @@ GRAPHITE_FLAGS = -fgraphite -fgraphite-identity -floop-flatten -ftree-loop-linea
 
 HOSTCC       = $(CCACHE) gcc
 HOSTCXX      = $(CCACHE) g++
-HOSTCFLAGS   = -Wall -Wmissing-prototypes -Wstrict-prototypes -O3 -fomit-frame-pointer -fgcse-las -std=gnu89
+HOSTCFLAGS   = -Wall -Wmissing-prototypes -Wstrict-prototypes -O3 -Wno-array-bounds -fomit-frame-pointer -fgcse-las -std=gnu89
 HOSTCFLAGS   += $(GRAPHITE_FLAGS)
-HOSTCXXFLAGS = -O3 -fgcse-las
+HOSTCXXFLAGS = -O3 -Wno-array-bounds -fgcse-las
 HOSTCXXFLAGS += $(GRAPHITE_FLAGS)
 
 # Decide whether to build built-in, modular, or both.
@@ -597,7 +597,7 @@ ifdef CONFIG_CC_OPTIMIZE_DEFAULT
 KBUILD_CFLAGS += -O2
 endif
 ifdef CONFIG_CC_OPTIMIZE_MORE
-KBUILD_CFLAGS += -O3 -fmodulo-sched -fmodulo-sched-allow-regmoves -fno-tree-vectorize
+KBUILD_CFLAGS += -O3 -Wno-array-bounds -fmodulo-sched -fmodulo-sched-allow-regmoves -fno-tree-vectorize
 endif
 
 # Tell gcc to never replace conditional load with a non-conditional one
